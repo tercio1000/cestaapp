@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cesta — Lista de compras simples, bonita e inteligente." />
+  <meta name="theme-color" content="#6366f1" />
+  <title>Cesta — Lista de Compras</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="alternate icon" href="img/favicon.svg" />
+  <link rel="apple-touch-icon" href="img/favicon.svg" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Canvas de confete -->
+  <canvas id="confete" aria-hidden="true"></canvas>
+
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div>
+          <h1 id="tituloApp">🛒 Lista de Compras</h1>
+          <p>Organize suas compras de forma simples</p>
+        </div>
+        <button id="btnTema" class="btn-tema" aria-label="Alternar tema">
+          <span class="icone-tema">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="card">
+      <!-- Formulário -->
+      <div class="form-row">
+        <label for="itemInput" class="sr-only">Nome do item</label>
+        <input
+          type="text"
+          id="itemInput"
+          placeholder="O que precisa comprar?"
+          autocomplete="off"
+        />
+
+        <label for="categoriaSelect" class="sr-only">Categoria</label>
+        <select id="categoriaSelect" class="select-categoria" aria-label="Categoria do item">
+          <option value="outros">📦 Outros</option>
+          <option value="frutas">🍎 Frutas</option>
+          <option value="verduras">🥬 Verduras</option>
+          <option value="carnes">🥩 Carnes</option>
+          <option value="laticinios">🧀 Laticínios</option>
+          <option value="padaria">🥖 Padaria</option>
+          <option value="bebidas">🥤 Bebidas</option>
+          <option value="limpeza">🧼 Limpeza</option>
+          <option value="higiene">🧴 Higiene</option>
+        </select>
+
+        <button id="btnGravar" class="btn-icone" title="Gravar voz" aria-label="Gravar voz">
+          🎤
+        </button>
+
+        <button id="btnAdicionar" aria-label="Adicionar item">
+          <span aria-hidden="true">+</span>
+          <span>Adicionar</span>
+        </button>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filtros" role="tablist" aria-label="Filtrar itens">
+        <button id="btnTodos" class="ativo" role="tab" aria-selected="true">Todos</button>
+        <button id="btnComprados" role="tab" aria-selected="false">Comprados</button>
+        <button id="btnPendentes" role="tab" aria-selected="false">Pendentes</button>
+      </div>
+
+      <!-- Contador -->
+      <div class="contador">
+        <span class="badge badge-total" id="badgeTotal">0 total</span>
+        <span class="badge badge-ok" id="badgeComprados">0 comprados</span>
+        <span class="badge badge-pend" id="badgePendentes">0 pendentes</span>
+      </div>
+
+      <!-- Barra de progresso -->
+      <div
+        class="progresso"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="progresso"
+      >
+        <div class="progresso-barra" id="progressoBarra"></div>
+      </div>
+
+      <!-- Lista -->
+      <ul id="lista" class="lista-itens"></ul>
+
+      <!-- Estado vazio -->
+      <div id="vazio" class="vazio">
+        <span class="vazio-icone" aria-hidden="true">🛒</span>
+        <p>Sua lista está vazia</p>
+        <small>Adicione um item para começar</small>
+      </div>
+
+      <!-- Ações secundárias -->
+      <div class="acoes-secundarias">
+        <button id="btnExportar" class="btn-limpar">📤 Exportar</button>
+        <button id="btnLimpar" class="btn-limpar">🗑️ Limpar comprados</button>
+      </div>
+    </main>
+
+    <footer>
+      <small>🧺 Cesta App • Feito com 💜 em HTML, CSS e JS puro</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
