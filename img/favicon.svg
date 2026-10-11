@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gradCesta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Itens maiores, mais visíveis em miniatura -->
+  <circle cx="28" cy="32" r="8" fill="#f59e0b"/>
+  <circle cx="50" cy="24" r="9" fill="#10b981"/>
+  <circle cx="72" cy="32" r="8" fill="#ef4444"/>
+
+  <!-- Alça grossa -->
+  <path d="M 30 48 Q 50 26 70 48"
+        stroke="url(#gradCesta)" stroke-width="7"
+        stroke-linecap="round" fill="none"/>
+
+  <!-- Corpo da cesta — mais robusto -->
+  <path d="M 18 50 L 82 50 L 74 86 Q 72 92 65 92 L 35 92 Q 28 92 26 86 Z"
+        fill="url(#gradCesta)"/>
+
+  <!-- Apenas 1 linha branca em vez de 2 -->
+  <line x1="24" y1="70" x2="76" y2="70"
+        stroke="white" stroke-width="3" opacity="0.6"/>
+</svg>
