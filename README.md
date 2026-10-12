@@ -201,21 +201,34 @@ Este projeto está sob a Licença MIT — veja o arquivo LICENSE para detalhes.
 
 Você pode usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender cópias do software, desde que mantenha o aviso de copyright original.
 
-👤 Autor
+## 👤 Autor
+
 <p align="center">
-Tercio M Sanches
-
-📍 Campinas/SP — Brasil
-
-https://img.shields.io/badge/GitHub-tercio1000-181717?style=for-the-badge&logo=github
-https://img.shields.io/badge/Email-sanchestm@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white
-
-Desenvolvedor front-end apaixonado por criar produtos simples, bonitos e funcionais.
-
+  <strong>Tercio M Sanches</strong><br>
+  📍 Campinas/SP — Brasil
 </p>
+
 <p align="center">
-🧺 Cesta App — Feito com 💜 em HTML, CSS e JS puro.
+  <a href="https://github.com/tercio1000">
+    <img src="https://img.shields.io/badge/GitHub-tercio1000-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="mailto:sanchestm@gmail.com">
+    <img src="https://img.shields.io/badge/Email-sanchestm@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
+  </a>
+</p>
 
-Se esse projeto te ajudou de alguma forma, considere dar uma ⭐!
+<p align="center">
+  <em>Desenvolvedor front-end apaixonado por criar produtos simples, bonitos e funcionais.</em>
+</p>
 
-</p> ```
+---
+
+<p align="center">
+  <strong>🧺 Cesta App</strong> — Feito com 💜 em HTML, CSS e JS puro.
+</p>
+
+<p align="center">
+  Se esse projeto te ajudou de alguma forma, considere dar uma ⭐!
+</p>
+
+
