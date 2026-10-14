@@ -547,3 +547,91 @@ input.addEventListener("keydown", (e) => {
 // ============================================
 renderizarLista();
 input.focus();
+
+// ============================================
+// BANNER DE INSTALAÇÃO PWA
+// ============================================
+
+const bannerInstalar = document.getElementById("bannerInstalar");
+const btnInstalarPWA = document.getElementById("btnInstalar");
+const btnFecharBanner = document.getElementById("btnFecharBanner");
+
+let eventoInstalacao = null;
+
+// Verifica se já foi dispensado nos últimos 7 dias
+function jaFoiDispensado() {
+  const data = localStorage.getItem("pwaDispensado");
+  if (!data) return false;
+  const seteDias = 7 * 24 * 60 * 60 * 1000;
+  return Date.now() - parseInt(data) < seteDias;
+}
+
+// Detecta se já está instalado (standalone)
+function jaEstaInstalado() {
+  return window.matchMedia("(display-mode: standalone)").matches ||
+         window.navigator.standalone === true;
+}
+
+// O Chrome dispara esse evento quando PWA é instalável
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  eventoInstalacao = event;
+  
+  if (!jaFoiDispensado() && !jaEstaInstalado() && bannerInstalar) {
+    setTimeout(() => {
+      bannerInstalar.hidden = false;
+    }, 3000);
+  }
+});
+
+// Clique no botão "Instalar"
+if (btnInstalarPWA) {
+  btnInstalarPWA.addEventListener("click", async () => {
+    if (!eventoInstalacao) return;
+    
+    eventoInstalacao.prompt();
+    const { outcome } = await eventoInstalacao.userChoice;
+    
+    if (outcome === "accepted") {
+      console.log("PWA instalado pelo usuário");
+    }
+    
+    eventoInstalacao = null;
+    if (bannerInstalar) bannerInstalar.hidden = true;
+  });
+}
+
+// Clique no botão fechar
+if (btnFecharBanner) {
+  btnFecharBanner.addEventListener("click", () => {
+    if (bannerInstalar) bannerInstalar.hidden = true;
+    localStorage.setItem("pwaDispensado", Date.now().toString());
+  });
+}
+
+// Detecta quando é instalado
+window.addEventListener("appinstalled", () => {
+  console.log("PWA foi instalado");
+  if (bannerInstalar) bannerInstalar.hidden = true;
+});
+
+// iOS: instrução manual (Safari não tem beforeinstallprompt)
+function detectarIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+if (detectarIOS() && !jaEstaInstalado() && !jaFoiDispensado() && bannerInstalar) {
+  const bannerTexto = bannerInstalar.querySelector(".banner-texto");
+  if (bannerTexto) {
+    bannerTexto.innerHTML = `
+      <strong>Instalar o Cesta App</strong>
+      <small>Toque em <strong>Compartilhar</strong> → <strong>Adicionar à Tela de Início</strong></small>
+    `;
+  }
+  
+  if (btnInstalarPWA) btnInstalarPWA.style.display = "none";
+  
+  setTimeout(() => {
+    bannerInstalar.hidden = false;
+  }, 3000);
+}
