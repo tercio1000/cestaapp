@@ -853,3 +853,118 @@ footer {
     font-size: 11px;
   }
 }
+/* ============================================
+   BANNER DE INSTALAÇÃO PWA
+   ============================================ */
+.banner-instalar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 480px;
+  background: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-lg);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  padding: var(--esp-4);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to   { transform: translate(-50%, 0);    opacity: 1; }
+}
+
+.banner-instalar[hidden] {
+  display: none;
+}
+
+.banner-conteudo {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+}
+
+.banner-icone {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--raio-sm);
+  flex-shrink: 0;
+}
+
+.banner-texto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.banner-texto strong {
+  font-size: var(--texto-md);
+  color: var(--cor-texto);
+  font-weight: 600;
+}
+
+.banner-texto small {
+  font-size: var(--texto-xs);
+  color: var(--cor-texto-suave);
+  margin-top: 2px;
+}
+
+.banner-acoes {
+  display: flex;
+  gap: var(--esp-2);
+  align-items: center;
+}
+
+.btn-instalar-pwa {
+  flex: 1;
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--cor-primaria);
+  color: white;
+  border: none;
+  border-radius: var(--raio-md);
+  font-weight: 600;
+  font-size: var(--texto-sm);
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+.btn-instalar-pwa:hover {
+  background: var(--cor-primaria-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--sombra-lg);
+}
+
+.btn-fechar-banner {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--raio-sm);
+  border: none;
+  background: transparent;
+  color: var(--cor-texto-suave);
+  font-size: 18px;
+  cursor: pointer;
+  transition: var(--transicao);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-fechar-banner:hover {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+/* Esconde o banner no desktop (só mobile) */
+@media (min-width: 768px) {
+  .banner-instalar {
+    display: none !important;
+  }
+}
